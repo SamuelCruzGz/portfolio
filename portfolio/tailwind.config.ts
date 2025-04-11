@@ -1,11 +1,11 @@
 // tailwind.config.js
-
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}"
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/App.css" 
   ],
   theme: {
     extend: {
@@ -16,7 +16,7 @@ const config: Config = {
         'neon-fucsia': '#ff00c8',
         'electric-cyan': '#00f7ff',
         'background-gray': '#080808',
-        'secondary-grey': '#2c2c2c',
+        'secondary-grey': '#c7c7c7',
         'color-font': '#d9d9e3'
       },
       fontFamily: {

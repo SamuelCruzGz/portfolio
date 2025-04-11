@@ -2,3 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@keyframes glow-line {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.animate-glow-line {
+  background: linear-gradient(90deg, transparent, #ff4bf2, transparent);
+  height: 2px;
+  animation: glow-line 10s linear infinite;
+}

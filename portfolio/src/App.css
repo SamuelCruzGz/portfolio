@@ -2,9 +2,10 @@ body, html {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%; /* Puede ser útil */
+  height: 100%; 
 }
-/* Si usas React y tienes un div root, también puede necesitarlo */
+
 #root {
    height: 100%;
 }
+
