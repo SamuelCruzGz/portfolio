@@ -2,23 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@keyframes glow-line {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
+.text-glow{
+    text-shadow: 
+    0 0 4px #050505,
+    0 0 8px #ff00c8;
+}
+.glow-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #ff00c8;
+  border-radius: 9999px;
+  animation: flicker 3s infinite ease-in-out;
+  box-shadow:
+    0 0 5px #ff00c8,
+    0 0 10px #ff00c8,
+    0 0 20px #ff00c8;
 }
 
-.animate-glow-line {
-  background: linear-gradient(90deg, transparent, #ff4bf2, transparent);
-  height: 2px;
-  animation: glow-line 10s linear infinite;
+.glow-bar:hover{
+  filter: brightness(1.2);
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    box-shadow:
+      0 0 5px #ff00c8,
+      0 0 10px #ff00c8,
+      0 0 20px #ff00c8;
+  }
+  20%, 24%, 55% {
+    opacity: 0.4;
+    box-shadow:
+      0 0 2px #ff00c8,
+      0 0 5px #ff00c8,
+      0 0 10px #ff00c8;
+  }
 }

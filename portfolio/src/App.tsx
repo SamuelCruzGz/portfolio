@@ -10,6 +10,7 @@ function App() {
   return (
     <div className="min-h-screen w-full bg-[url('/pattern-background.png')] bg-cover bg-center bg-fixed bg-background-gray">
       <NavbarTop/>
+
       <div className="p-4 mt-16">
         <Routes>
           <Route path="/" element={<Home />} />

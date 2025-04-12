@@ -5,7 +5,7 @@ const config: Config = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./src/App.css" 
+    "./src/index.css" 
   ],
   theme: {
     extend: {
@@ -21,7 +21,17 @@ const config: Config = {
       },
       fontFamily: {
         orbitron: ['"Orbitron"', 'sans-serif'],
-        game: ['"VT323"', 'sans-serif']
+        game: ['"VT323"', 'sans-serif'],
+        fontawesome: ["Font Awesome 5 Free"]
+      },
+      animation: {
+        'fade-in-down': 'fadeInDown 0.8s ease-out'        
+      },
+      keyframes: {
+        fadeInDown: {
+          '0%': { opacity: '0', transform: 'translateY(-10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
     },
   },
