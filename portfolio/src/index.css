@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .text-glow{
     text-shadow: 
     0 0 4px #050505,

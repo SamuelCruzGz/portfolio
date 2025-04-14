@@ -9,15 +9,10 @@ export default function Navbar() {
   
   return (
     <nav className="fixed w-full bg-[#0f0f0f] border-b border-neon-blue text-white ">      
-      <div className="flex items-center justify-around p-4">
-        <div className="ml-2 justify-start">
+      <div className="relative flex items-center justify-start overflow-visible p-10">
+        
           <MenuBarIcon />          
-        </div>
-        <div className={`space-x-10 transition-all duration-500 ease-in-out flex`}>
-          <MenuHomeIcon/>
-          <MenuProjectIcon/>
-          <MenuContactIcon/>
-        </div>
+        
       </div>   
     </nav>
   );
