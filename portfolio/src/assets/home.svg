@@ -1,0 +1,25 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <path 
+    d="
+      M40 120 
+      L40 80 
+      L100 30 
+      L160 80 
+      L160 120 
+      L135 120 
+      L135 85 
+      L115 85 
+      L115 120 
+      L85 120 
+      L85 85 
+      L65 85 
+      L65 120 
+      Z
+    "
+    fill="none"
+    stroke="#ff4bf2"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

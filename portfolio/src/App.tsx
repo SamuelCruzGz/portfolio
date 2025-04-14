@@ -8,9 +8,10 @@ import Contact from './pages/Contact';
 
 function App() {
   return (
-    <div className="min-h-screen w-full bg-[url('/pattern-background.png')] bg-cover bg-center bg-fixed bg-background-gray">
+    <div className="min-h-screen w-full  bg-cover bg-center bg-fixed bg-background-gray">
+      
       <NavbarTop/>
-
+      <NavbarMenu/>
       <div className="p-4 mt-16">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -23,6 +24,3 @@ function App() {
 }
 
 export default App;
-
-
-
