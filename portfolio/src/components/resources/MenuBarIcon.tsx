@@ -1,4 +1,4 @@
-import { motion, Variants } from 'framer-motion'
+import { motion, Variants } from 'framer-motion';
 import { useState } from 'react';
 
 type MenuBarIconProps = {
@@ -15,7 +15,7 @@ export const MenuBarIcon: React.FC<MenuBarIconProps> = ({
 
     const line1 = {
         closed: { x: 0, y: 0, rotate: 0 },
-        open: { x: 60, y: -20 },
+        open: { x: 360, y: -20 },
     };
 
     const line2 = {
@@ -30,7 +30,7 @@ export const MenuBarIcon: React.FC<MenuBarIconProps> = ({
 
     return(
         // Made by Samuel Cruz 
-        <div onClick={toggleMenu} className='cursor-pointer ' >
+        <div onClick={toggleMenu} className='cursor-pointer relative overflow-visible w-[200px] h-[50px]' >
             <motion.svg       viewBox={`0 0 200 200`}
                              width="max-width" height={size} xmlns="http://www.w3.org/2000/svg" >
                 {/*   Line 1  */}   
