@@ -6,8 +6,8 @@
 
 .text-glow{
     text-shadow: 
-    0 0 4px #050505,
-    0 0 8px #ff00c8;
+    0 0 2px #050505,
+    0 0 10px #ff00c8;
 }
 .glow-bar {
   width: 100%;
@@ -41,3 +41,37 @@
       0 0 10px #ff00c8;
   }
 }
+
+.glow-bar-blue {
+width: 100%;
+height: 6px;
+background-color: #00f0ff;
+border-radius: 9999px;
+animation: flicker-blue 3s infinite ease-in-out;
+box-shadow:
+  0 0 5px #00f0ff,
+  0 0 10px #00f0ff,
+  0 0 20px #00f0ff;
+}
+
+.glow-bar-blue:hover{
+filter: brightness(1.2);
+}
+
+@keyframes flicker-blue {
+0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+  opacity: 1;
+  box-shadow:
+    0 0 5px #00f0ff,
+    0 0 10px #00f0ff,
+    0 0 20px #00f0ff;
+}
+20%, 24%, 55% {
+  opacity: 0.4;
+  box-shadow:
+    0 0 2px #00f0ff,
+    0 0 5px #00f0ff,
+    0 0 10px #00f0ff;
+}
+}
+

@@ -1,67 +1,59 @@
 import { motion, Variants } from 'framer-motion';
-import { div } from 'framer-motion/client';
-import React, { useState } from 'react';
+import { draw, flicker } from '../../animations/MenuAnimations';
 
 type MenuContactIconProps = {
-    size?: number
+    isOpen: boolean
 }
 
-export const MenuContactIcon: React.FC<MenuContactIconProps> = ({
-    size = 60
-}) => {
+const whileHov = {
+    whileHover:{
+        opacity: flicker.opacity,
+        scale: flicker.scale,
+        transition: flicker.transition
+    }
+}
+
+export const MenuContactIcon: React.FC<MenuContactIconProps> = ({ isOpen }) => {
     return (
-        <div>
-            <motion.svg viewBox={'0 0 200 200'}
-            width="max-width" height={size} xmlns="http://www.w3.org/2000/svg"
-            >
-                <motion.circle
-                 cx="100" cy="100" r="70" 
-                 fill="none" 
-                 stroke="#00ff99" stroke-width="8"
-                ></motion.circle>
-                <motion.circle
-                 cx="100" cy="60" r="10" 
-                 fill="none" 
-                 stroke="#00ff99" stroke-width="5"
-                ></motion.circle>
-                <motion.circle
-                 cx="100" cy="60" r="5"
-                 fill="none" 
-                 stroke="#00ff99" stroke-width="5"
-                ></motion.circle>
-                <motion.circle
-                 cx="100" cy="60" r="1"
-                 fill="none" 
-                 stroke="#00ff99" stroke-width="5"
-                ></motion.circle>
-                <motion.path 
-                    d="M80 90
-                    L80 90 100 90
-                    L100 90 100 150
-                    M80 150
-                    L80 150 120 150
-                    "
-                    fill="none" 
-                    stroke="#00ff99" stroke-width="5"  
-                ></motion.path>
-            </motion.svg>
-        </div>
+        <motion.g
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
+            className={"glitch"}
+            transition={{ duration: 3, ease: "easeInOut" }}
+            transform="translate(3900, 0)">   
+            <motion.circle
+                cx="100" cy="100" r="60" 
+                fill="none"
+                stroke="#00ff99" stroke-width="8"
+                variants={draw}
+                style={{ pathLength: 0 }}
+                {...whileHov}/>
+            <motion.circle
+                cx="100" cy="70" r="5" 
+                fill="none"
+                stroke="#00ff99" stroke-width="8"
+                variants={draw}
+                style={{ pathLength: 0 }}
+                {...whileHov}/>
+            <motion.circle
+                cx="100" cy="70" r="1" 
+                fill="none"
+                stroke="#00ff99" stroke-width="8"
+                variants={draw}
+                style={{ pathLength: 0 }}
+                {...whileHov}/>
+            <motion.path
+                d="M80 90
+                L80 90 100 90
+                L100 90 100 140
+                M80 140
+                L80 140 120 140
+                "
+                fill="none" stroke="#00ff99" stroke-width="5"  
+                variants={draw}
+                style={{ pathLength: 0 }}
+                {...whileHov}/>
+                
+        </motion.g>  
     )
 }
-
-<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="100" cy="100" r="90" fill="none" stroke="#00ff99" stroke-width="8"/>
-  <circle cx="100" cy="60" r="10" fill="none" stroke="#00ff99" stroke-width="5"/>
-  <circle cx="100" cy="60" r="5" fill="none" stroke="#00ff99" stroke-width="3"/>
-  <circle cx="100" cy="60" r="1" fill="none" stroke="#00ff99" stroke-width="3"/>
-  <path 
-  d="M80 90
-    L80 90 100 90
-    L100 90 100 150
-    M80 150
-    L80 150 120 150
-    "
-
-  fill="none" stroke="#00ff99" stroke-width="5"  
-  />
-</svg>
