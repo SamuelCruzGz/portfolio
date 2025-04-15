@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
 
-export default function Navbar() {
+export default function NavbarSide() {
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[#0f0f0f] border-b border-neon-blue text-white shadow-lg z-50">
-      <div className="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
-        <span className="text-xl font-bold text-neon-pink">MiPortafolio</span>
-        <div className="space-x-4">
-          <Link to="/" className="hover:text-neon-blue">Inicio</Link>
-          <Link to="/projects" className="hover:text-neon-blue">Proyectos</Link>
-          <Link to="/contact" className="hover:text-neon-blue">Contacto</Link>
-        </div>
+    <nav className="fixed top-[275px] left-0 w-[250px] h-[calc(100vh-5rem)] bg-[#0f0f0f] text-white z-10 flex flex-col">
+      <div className="flex flex-col font-orbitron gap-14 pt-20 pl pr-6">
+        <h1 className="cursor-pointer glitch side-text" data-text="Resumen">Resumen</h1>
+        <h1 className="cursor-pointer glitch side-text" data-text="Experiencia">Experiencia</h1>
+        <h1 className="cursor-pointer glitch side-text" data-text="Educación">Educación</h1>
+        <h1 className="cursor-pointer glitch side-text" data-text="Habilidades">Habilidades</h1>
+        <h1 className="cursor-pointer glitch side-text" data-text="Acerca de mí">Acerca de mí</h1>
       </div>
+      <div className="glow-bar-green border-r"></div>
     </nav>
   );
 }

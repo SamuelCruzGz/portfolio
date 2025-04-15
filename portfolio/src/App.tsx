@@ -12,6 +12,7 @@ function App() {
       
       <NavbarTop/>
       <NavbarMenu/>
+      <NavbarSide/>
       <div className="p-4 mt-16">
         <Routes>
           <Route path="/" element={<Home />} />

@@ -29,7 +29,7 @@ export const MenuContactIcon: React.FC<MenuContactIconProps> = ({ isOpen }) => {
                 style={{ pathLength: 0 }}
                 {...whileHov}/>
             <motion.circle
-                cx="100" cy="70" r="5" 
+                cx="100" cy="70" r="3" 
                 fill="none"
                 stroke="#00ff99" stroke-width="8"
                 variants={draw}
@@ -45,9 +45,9 @@ export const MenuContactIcon: React.FC<MenuContactIconProps> = ({ isOpen }) => {
             <motion.path
                 d="M80 90
                 L80 90 100 90
-                L100 90 100 140
-                M80 140
-                L80 140 120 140
+                L100 90 100 130
+                M80 130
+                L80 130 120 130
                 "
                 fill="none" stroke="#00ff99" stroke-width="5"  
                 variants={draw}
