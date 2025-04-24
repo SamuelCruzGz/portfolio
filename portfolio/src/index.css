@@ -117,7 +117,6 @@ filter: brightness(1.2);
   color: white;
   font-size: 18px;
   font-weight: bold;
-  width: auto;
   margin: 0 auto;
   animation: flicker 1.5s infinite alternate;
   letter-spacing: 1px;
@@ -224,4 +223,148 @@ filter: brightness(1.2);
   background-image: linear-gradient(to right, rgba(255, 0, 0, 0.2), rgba(0, 0, 255, 0.2));
   filter: brightness(1.2);
   backdrop-filter: blur(3px);
+}
+
+
+
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 2px,
+    transparent 2px,
+    transparent 10px
+  );
+  pointer-events: none;
+  animation: noise-anim-2 s infinite linear alternate-reverse;
+  animation: noise-anim 1s infinite linear alternate-reverse;
+  
+}
+
+
+.perspective {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+@keyframes modal-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-enter{
+  animation: modal-enter 2s ;
+}
+
+@keyframes backgroundLines {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.modal-warp-bg {
+  position: absolute;
+  color: #fff;
+  inset: 0;
+  z-index: 40;
+  background: linear-gradient(135deg, #301934, #512b58, #841c26, transparent 1px);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+
+.retro-grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Permite la interacción con el contenido debajo */
+  z-index: -1; /* Asegura que esté detrás del contenido */
+  background: radial-gradient(ellipse at center bottom, rgba(0, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0) 60%); /* Simula el brillo del horizonte */
+  opacity: 0.8;
+}
+
+.retro-grid-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0, 191, 255, 0.1) 1px, rgba(0, 191, 255, 0.1) 2px, transparent 2px, transparent 10px),
+              repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(0, 191, 255, 0.1) 1px, rgba(0, 191, 255, 0.1) 2px, transparent 2px, transparent 10px);
+  opacity: 0.7;
+}
+
+.retro-stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -2;
+  background-image: radial-gradient(circle, rgba(239, 6, 247) , transparent 1px),
+                    radial-gradient(circle, rgb(3, 164, 250), transparent 2px);
+  background-size: 50px 50px, 100px 100px;
+  animation: twinkle 5s linear infinite;
+}
+
+@keyframes twinkle {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 50px 50px, 100px 100px; }
+}
+
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+.tron-frame {
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow:
+    0 0 5px rgba(0, 255, 255, 0.2),
+    0 0 10px rgba(0, 255, 255, 0.2),
+    inset 0 0 5px rgba(255, 0, 255, 0.3);
 }

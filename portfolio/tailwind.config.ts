@@ -14,6 +14,7 @@ const config: Config = {
         'neon-pink': '#ff4bf2',
         'neon-green': '#00ff99',
         'neon-fucsia': '#ff00c8',
+        'neon-red': '#ff0534',
         'electric-cyan': '#00f7ff',
         'background-gray': '#080808',
         'secondary-grey': '#c7c7c7',
@@ -22,7 +23,8 @@ const config: Config = {
       fontFamily: {
         orbitron: ['"Orbitron"', 'sans-serif'],
         game: ['"VT323"', 'sans-serif'],
-        fontawesome: ["Font Awesome 5 Free"]
+        fontawesome: ["Font Awesome 5 Free"],
+        oxanium: ['"Oxanium"', 'sans-serif']
       },
       
     },
