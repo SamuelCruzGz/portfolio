@@ -340,6 +340,10 @@ filter: brightness(1.2);
   animation: twinkle 5s linear infinite;
 }
 
+.card-programming {
+  animation: twinkle 5s linear infinite; 
+}
+
 @keyframes twinkle {
   0% { background-position: 0 0, 0 0; }
   100% { background-position: 50px 50px, 100px 100px; }

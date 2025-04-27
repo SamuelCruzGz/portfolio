@@ -1,6 +1,7 @@
 import ExperienceAccordion  from './resources/Experiences'
 import EducationAccordion  from './resources/Education'
 import { Card } from './resources/Cards'
+import { Skill } from './resources/Skills'
 
 
 
@@ -36,12 +37,7 @@ export default function MainContent() {
                   </>
                 }/>
 
-            <Card title="HABILIDADES" 
-                description="Ingeniero de software con experiencia en el desarrollo de apis, servicios backend y frontend, especializados en Apigee Edge,
-                microservicios y AWS (Lambda, DynamoDB, S3, Api Gateway, etc), he trabajado con Typescript, NodeJs, React, Tailwind, Javascript, Python,
-                optimizando soluciones escalables y eficientes. Con experiencia en la creación de documentacion tecnica como Swagger, manejo de herramientas
-                colaborativas como Git, asi como herramientas de gestion de datos como Excel. Me apasiona liderar equipos pequenos, promover la mejora
-                continua y aprender nuevas tecnologias para optimizar el rendimiento de los sistemas" />
+            <Skill title="HABILIDADES"/>
                 
             <Card title="ACERCA DE MI" 
                 description= {
