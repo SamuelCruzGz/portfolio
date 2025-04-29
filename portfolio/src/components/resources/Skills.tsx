@@ -1,141 +1,92 @@
-import { motion, AnimatePresence } from "framer-motion";
+"use client";
+
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
+import ModalPortal from "./ModalPortal";
 
-type CardProps = {
+interface SkillProps {
+  id: number;
+  name: string;
+}
+
+interface ModalSkillsProps {
+  skill: SkillProps[];
   title: string;
-};
+  onClose: () => void;
+}
 
-const skill = [
-  { id: 1, name: "Lenguajes de programación" },
-  { id: 2, name: "Frameworks/Bibliotecas" },
-  { id: 3, name: "Bases de datos" },
-  { id: 4, name: "Computación en la nube" },
-  { id: 5, name: "Desarrollo Web" },
-  { id: 6, name: "APIs" },
-  { id: 7, name: "Herramientas tecnológicas" },
-  { id: 8, name: "Habilidades blandas" },
-  { id: 9, name: "Idiomas" },
-];
-
-export function Skill({ title }: CardProps) {
-  const [flipped, setFlipped] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [angles, setAngles] = useState<number[]>(
-    skill.map((_, i) => (i / skill.length) * 2 * Math.PI)
-  );
-  const requestRef = useRef<number | null>(null);
+export default function Skill({ skill, title, onClose }: ModalSkillsProps) {
+  const [angles, setAngles] = useState<number[]>([]);
+  const requestRef = useRef<number>();
 
   useEffect(() => {
-    if (!showModal) return;
+    const numSkills = skill.length;
+    const initialAngles = Array.from({ length: numSkills }, (_, i) => (i / numSkills) * Math.PI * 2);
+    setAngles(initialAngles);
 
-    const rotate = () => {
-      setAngles((prev) => prev.map((a) => a + 0.01));
-      requestRef.current = requestAnimationFrame(rotate);
+    const update = () => {
+      setAngles(prevAngles => prevAngles.map(angle => angle + 0.01)); // Velocidad de rotación
+      requestRef.current = requestAnimationFrame(update);
     };
-    requestRef.current = requestAnimationFrame(rotate);
 
-    return () => {
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
-    };
-  }, [showModal]);
-
-  const handleClick = () => {
-    setFlipped(true);
-    setAngles(skill.map((_, i) => (i / skill.length) * (2 * Math.PI))); 
-    setTimeout(() => setShowModal(true), 500);
-  };
+    requestRef.current = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(requestRef.current!);
+  }, [skill.length]);
 
   const handleClose = () => {
-    setShowModal(false);
-    setFlipped(false);
+    cancelAnimationFrame(requestRef.current!);
+    onClose();
   };
 
+  const radius = 200; // radio de la órbita
+
   return (
-    <>
-      {/* Botón para abrir el modal */}
-      <div
-        className="bg-[#c1c1] rounded-xl p-6 cursor-pointer 
-          hover:scale-105 hover:brightness-125 hover:saturate-150 hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] 
-          transition-all duration-300 ease-in-out 
-          border border-cyan-500/20 
-          aspect-square max-w-[250px] 
-          flex items-center justify-center text-center glitch side-text"
-        onClick={handleClick}
-      >
+    <ModalPortal>
+      <div className="fixed inset-0 z-[1000] flex items-center justify-center">
         <div
-          className={`transition-transform duration-700 transform-style-preserve-3d w-full h-full ${
-            flipped ? "rotate-y-180" : ""
-          }`}
-        >
-          <div className="rounded-xl shadow-lg p-6 hover:scale-105 transition-transform duration-300 text-center pb-4 card backface-hidden">
-            <h2 className="font-orbitron text-white text-xl mb-4 mt-12">
-              {title}
-            </h2>
-          </div>
-        </div>
-      </div>
+          className="absolute inset-0 bg-black/70 backdrop-blur-md retro-grid-overlay retro-stars"
+          onClick={handleClose}
+        />
+        <div className="relative w-full h-full overflow-hidden pointer-events-none">
+          {skill.map((ski, index) => {
+            const angle = angles[index] || 0;
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
 
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center text-center text-white overflow-visible">
-          {/* Fondo */}
-          <div
-            className="fixed inset-0 modal-warp-bg retro-grid-overlay retro-stars"
-            onClick={handleClose}
-          ></div>
+            const x = centerX + radius * Math.cos(angle) - 80; // ajustar 80px mitad ancho
+            const y = centerY + radius * Math.sin(angle) - 48; // ajustar 48px mitad alto
 
-          {/* Círculo de tarjetas */}
-          <div className="fixed w-[800px] h-[800px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <AnimatePresence>
-              {skill.map((ski, index) => {
-                const radius = 300;
-                const centerX = 400; // la mitad de 800px
-                const centerY = 400;
-                const x = centerX + radius * Math.cos(angles[index]);
-                const y = centerY + radius * Math.sin(angles[index]);
+            return (
+              <motion.div
+                key={ski.id}
+                className="absolute w-40 h-24 flex items-center justify-center
+                  bg-gradient-to-br from-[#1a0e2a] via-[#2a0a2f] to-[#0d1b2a]
+                  text-white font-game text-lg rounded-lg shadow-lg border border-white/10 pointer-events-auto"
+                style={{ transform: `translate(${x}px, ${y}px)` }}
+              >
+                {ski.name}
+              </motion.div>
+            );
+          })}
 
-                return (
-                  <motion.div
-                    key={ski.id}
-                    className="absolute bg-gradient-to-br from-[#1a0e2a] via-[#2a0a2f] to-[#0d1b2a]
-                      border border-white/10 rounded-lg overflow-hidden shadow-lg p-4 font-game text-xl w-40 h-24 flex
-                      items-center justify-center text-center"
-                    initial={{ opacity: 0, scale: 0.5, x: centerX, y: centerY }}
-                    animate={{ opacity: 1, scale: 1, x, y }}
-                    exit={{ opacity: 0, scale: 0.5, x: centerX, y: centerY }}
-                    transition={{
-                      delay: index * 0.05,
-                      duration: 0.6,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    <h1 className="card-programming">{ski.name}</h1>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </div>
-
-          {/* Panel central */}
-          <div className="fixed bg-[#111111cc] rounded-xl border border-white/10 p-6 shadow-[0_0_20px_rgba(0,255,255,0.3)] backdrop-blur-md top-10 left-1/2 -translate-x-1/2">
+          {/* --- Modal central --- */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+              bg-[#111111cc] p-6 rounded-xl border border-white/10 shadow-[0_0_20px_rgba(0,255,255,0.3)] backdrop-blur-md pointer-events-auto">
             <button
               onClick={handleClose}
-              className="absolute top-1 right-2 text-white text-2xl hover:text-neon-fucsia cursor-pointer"
+              className="absolute top-2 right-3 text-white text-2xl hover:text-neon-fucsia cursor-pointer"
             >
               ✕
             </button>
-            <div
-              className="bg-gradient-to-br from-[#1a0e2a] via-[#2a0a2f] to-[#0d1b2a] 
-                rounded-lg p-20 border border-white/10 shadow-[0_0_20px_rgba(255,0,255,0.1)] 
-                max-w-sm mx-auto animate-fade-in-up scanlines"
-            >
-              <h2 className="text-white font-game text-5xl mb-4 text-center">
+            <div className="bg-gradient-to-br from-[#1a0e2a] via-[#2a0a2f] to-[#0d1b2a]
+                rounded-lg p-20 shadow-[0_0_20px_rgba(255,0,255,0.2)] border border-white/10 max-w-sm mx-auto">
+              <h2 className="text-white font-game text-5xl text-center">
                 {title}
               </h2>
             </div>
           </div>
         </div>
-      )}
-    </>
+      </div>
+    </ModalPortal>
   );
 }

@@ -1,0 +1,20 @@
+[[headers]]
+     for = "/*.js"
+     [headers.values]
+       Content-Type = "application/javascript"
+
+   [[headers]]
+     for = "/*.jsx" # Si usas archivos .jsx (React)
+     [headers.values]
+       Content-Type = "application/javascript"
+
+   [[headers]]
+     for = "/*.tsx" # Si usas archivos .tsx (React + TypeScript)
+     [headers.values]
+       Content-Type = "application/javascript"
+
+   [[headers]]
+     for = "/static/*" # Para archivos estáticos (imágenes, etc.)
+     [headers.values]
+       Cache-Control = "public, max-age=31536000, immutable"
+

@@ -297,7 +297,7 @@ filter: brightness(1.2);
   z-index: 40;
   background: linear-gradient(135deg, #301934, #512b58, #841c26, transparent 1px);
   backdrop-filter: blur(8px);
-  overflow: hidden;
+  
   perspective: 1000px;
 }
 
