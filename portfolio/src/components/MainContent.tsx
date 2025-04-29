@@ -1,16 +1,28 @@
-import ExperienceAccordion  from './resources/Experiences'
-import EducationAccordion  from './resources/Education'
-import { Card } from './resources/Cards'
-import { Skill } from './resources/Skills'
+import { useState } from "react";
+import ExperienceAccordion from './resources/Experiences';
+import EducationAccordion from './resources/Education';
+import { Card } from './resources/Cards';
+import SkillsModal from './resources/Skills';
 
-
+const skillData = [
+  { id: 1, name: "Lenguajes de programación" },
+  { id: 2, name: "Frameworks/Bibliotecas" },
+  { id: 3, name: "Bases de datos" },
+  { id: 4, name: "Computación en la nube" },
+  { id: 5, name: "Desarrollo Web" },
+  { id: 6, name: "APIs" },
+  { id: 7, name: "Herramientas tecnológicas" },
+  { id: 8, name: "Habilidades blandas" },
+  { id: 9, name: "Idiomas" },
+];
 
 export default function MainContent() {
-    return (
-      <main className="w-full min-h-screen bg-black px-6 py-10">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20">
-            <Card title="RESUMEN" 
-                  description={
+  const [isSkillModalOpen, setIsSkillModalOpen] = useState(false);
+
+  return (
+    <main className="w-full min-h-screen bg-black px-6 py-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20">
+        <Card title="RESUMEN" description={
                     <>
                     <p className="mb-3">Ingeniero de software con experiencia en el desarrollo de APIs, servicios backend y frontend, 
                     especializado en Apigee Edge, microservicios y tecnologías de AWS (Lambda, DynamoDB, S3, API Gateway, entre otras).</p>
@@ -20,27 +32,17 @@ export default function MainContent() {
                     <p className="mb-3">Me apasiona liderar equipos pequeños, promover la mejora continua y 
                     aprender nuevas tecnologías para optimizar el rendimiento de los sistemas.</p>
                     </>
-                  }    
-            />
+                  }     />
+        <Card title="EXPERIENCIA" description={<ExperienceAccordion />} />
+        <Card title="EDUCACIÓN" description={<EducationAccordion />} />
 
-            <Card title="EXPERIENCIA"         
-                description={
-                  <>
-                  <ExperienceAccordion/>
-                  </>
-                }/>
-                            
-            <Card title="EDUCACIÓN" 
-                description={
-                  <>
-                  <EducationAccordion/>
-                  </>
-                }/>
+        {/* BOTÓN PARA ABRIR MODAL DE SKILLS */}
+        <div onClick={() => setIsSkillModalOpen(true)} className="cursor-pointer">
+          <Card title="HABILIDADES" description={<p>Click para ver</p>} />
+        </div>
+        
 
-            <Skill title="HABILIDADES"/>
-                
-            <Card title="ACERCA DE MI" 
-                description= {
+        <Card title="ACERCA DE MI" description= {
                   <>
                   <p className="mb-3">Hola, soy Samuel Sebastián. Como ingeniero de software, me apasiona la tecnología y el desafío de 
                     resolver problemas complejos.
@@ -58,10 +60,17 @@ export default function MainContent() {
                     Valoro la honestidad, la creatividad y la curiosidad en mi vida personal y profesional"
                   </p>
                   </>
-                }
-            />
-                
-        </div>
-      </main>
-    )
+                } />
+      </div>
+
+      {/* MODAL DE HABILIDADES */}
+      {isSkillModalOpen && (
+        <SkillsModal
+          title="HABILIDADES"
+          skills={skillData}
+          onClose={() => setIsSkillModalOpen(false)}
+        />
+      )}
+    </main>
+  );
 }

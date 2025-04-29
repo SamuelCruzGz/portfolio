@@ -1,11 +1,12 @@
+// components/resources/ModalPortal.tsx
+import { ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { useEffect, useState, ReactNode } from "react";
 
 type ModalPortalProps = {
   children: ReactNode;
 };
 
-export function ModalPortal({ children }: ModalPortalProps) {
+export default function ModalPortal({ children }: ModalPortalProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
