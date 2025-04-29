@@ -1,54 +1,34 @@
-# React + TypeScript + Vite
+# Bienvenido al Portafolio de Samuel Cruz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es mi portafolio personal, creado para mostrar mis habilidades y experiencia a posibles empleadores y colaboradores, especialmente en el ámbito del desarrollo front-end. Aquí podrás encontrar información sobre mí, mi experiencia, habilidades y educación.
 
-Currently, two official plugins are available:
+Para este sitio hice uso de varias herramientas, eligiendo cada una por sus ventajas específicas:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **Typescript:** Para un código más robusto y mantenible.
+* **Tailwind CSS:** Para un desarrollo de estilos rápido y flexible.
+* **HTML:** Para la estructura semántica de la página.
+* **CSS:** Para estilos personalizados y complementarios.
+* **React:** Una biblioteca potente para construir interfaces de usuario dinámicas.
+* **Vite:** Un constructor de proyectos rápido y moderno para una excelente experiencia de desarrollo.
+* **NodeJS:** Entorno de ejecución necesario para las herramientas de desarrollo.
+* **Github:** Para el control de versiones y la colaboración.
+* **Netlify:** Para el despliegue y hosting del sitio: https://app.netlify.com/sites/artists-portfolio/deploys
+* **SVG (Creando iconos propios con Motion):** Para un control preciso de las animaciones y la escalabilidad de los iconos.
+* **Motion (Framer Motion):** Para crear animaciones fluidas e interactivas.
 
-## Expanding the ESLint configuration
+## Próximas Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* Trabajar en la sección de contacto
+* Terminar la sección de habilidades
+* Ajustar el scroll de las tarjetas que pierden el size
+* Diseño responsivo
+* Realizar otros desarrollos para la sección de 'Proyectos'
+* Implementacion de asistente virtual
+* Diseño light/dark
+* API diferentes idiomas
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Contacto
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Puedes contactarme a través de samuel.sebas46@gmail.com o https://www.linkedin.com/in/samuel-sebastian-cruz-gonzalez-31b360151/.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+¡Gracias por visitar mi portafolio!
