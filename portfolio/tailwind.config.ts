@@ -7,6 +7,9 @@ const config: Config = {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./src/index.css" 
   ],
+  safelist:[
+    'retro-stars'
+  ],
   theme: {
     extend: {
       colors: {

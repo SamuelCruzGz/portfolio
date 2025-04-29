@@ -35,16 +35,16 @@ export default function SkillsModal({ title, skills, onClose }: SkillsModalProps
     };
   }, []);
 
-  const radius = 450;
+  const radius = 550;
 
   return (
     <ModalPortal>
       <div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+  className="fixed inset-0 z-50 flex items-center justify-center bg-[#111111cc] shadow-[0_0_20px_rgba(0,255,255,0.3)] backdrop-blur-md "
   onClick={onClose} 
 >
   <div
-    className="relative w-full h-full flex items-center justify-center"
+    className="relative w-full h-full flex items-center justify-center retro-stars text-white"
     onClick={(e) => e.stopPropagation()} 
   >
 
@@ -58,8 +58,8 @@ export default function SkillsModal({ title, skills, onClose }: SkillsModalProps
                 <motion.div
                   key={skill.id}
                   className="absolute bg-gradient-to-br from-[#1a0e2a] via-[#2a0a2f] to-[#0d1b2a]
-                    border border-white/10 rounded-lg overflow-hidden shadow-lg p-4 font-game text-xl w-40 h-24 flex
-                    items-center justify-center text-center"
+                    border border-white/10 rounded-lg overflow-hidden shadow-lg p-4 font-game text-xl w-45 h-24 flex
+                    items-center justify-center text-center "
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1, x, y }}
                   exit={{ opacity: 0, scale: 0.5 }}
@@ -70,8 +70,7 @@ export default function SkillsModal({ title, skills, onClose }: SkillsModalProps
               );
             })}
           </AnimatePresence>
-
-          {/* CENTRO del modal */}
+          
           <div
             className="bg-gradient-to-br from-[#1a0e2a] via-[#2a0a2f] to-[#0d1b2a]
             rounded-lg p-20 border border-white/10 shadow-[0_0_20px_rgba(255,0,255,0.1)]

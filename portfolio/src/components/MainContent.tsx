@@ -36,12 +36,23 @@ export default function MainContent() {
         <Card title="EXPERIENCIA" description={<ExperienceAccordion />} />
         <Card title="EDUCACIÓN" description={<EducationAccordion />} />
 
-        {/* BOTÓN PARA ABRIR MODAL DE SKILLS */}
-        <div onClick={() => setIsSkillModalOpen(true)} className="cursor-pointer">
-          <Card title="HABILIDADES" description={<p>Click para ver</p>} />
+        <div
+          className="bg-[#c1c1] rounded-xl p-6 cursor-pointer
+          hover:scale-105 hover:brightness-125 hover:saturate-150 hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]
+          transition-all duration-300 ease-in-out border border-cyan-500/20
+          aspect-square max-w-[250px] flex items-center justify-center text-center glitch side-text"
+          onClick={() => setIsSkillModalOpen(true)}
+        >
+          <h2 className="font-orbitron text-white text-xl mb-12 mt-10">HABILIDADES</h2>
         </div>
-        
 
+        
+      
+
+      {/* MODAL DE HABILIDADES */}
+      {isSkillModalOpen && (
+        <SkillsModal title="Habilidades" skills={skillData} onClose={() => setIsSkillModalOpen(false)} />
+      )}
         <Card title="ACERCA DE MI" description= {
                   <>
                   <p className="mb-3">Hola, soy Samuel Sebastián. Como ingeniero de software, me apasiona la tecnología y el desafío de 
@@ -61,16 +72,9 @@ export default function MainContent() {
                   </p>
                   </>
                 } />
+      
       </div>
 
-      {/* MODAL DE HABILIDADES */}
-      {isSkillModalOpen && (
-        <SkillsModal
-          title="HABILIDADES"
-          skills={skillData}
-          onClose={() => setIsSkillModalOpen(false)}
-        />
-      )}
     </main>
   );
 }
