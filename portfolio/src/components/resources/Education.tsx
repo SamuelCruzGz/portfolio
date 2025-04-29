@@ -1,4 +1,4 @@
-import { details } from 'framer-motion/client'
+
 import { useState } from 'react'
 
 const education = [

@@ -1,4 +1,4 @@
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { draw, flicker } from '../../animations/MenuAnimations';
 
 type MenuContactIconProps = {
@@ -13,7 +13,7 @@ const whileHov = {
     }
 }
 
-export const MenuContactIcon: React.FC<MenuContactIconProps> = ({ isOpen }) => {
+export const MenuContactIcon: React.FC<MenuContactIconProps> = ({  }) => {
     return (
         <motion.g
             initial={{ pathLength: 0, opacity: 0 }}
