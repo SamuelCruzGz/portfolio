@@ -11,11 +11,12 @@ function App() {
     <div className="min-h-screen w-full  bg-cover bg-center bg-fixed bg-background-gray">
       
       <NavbarTop/>
-      
+
       <NavbarMenu/>
        
       <div className="mt-[180px] ">
         <MainContent />
+        
       </div>
     </div>
 
