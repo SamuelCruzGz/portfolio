@@ -1,0 +1,33 @@
+name: Deploy Mi Portafolio
+
+on:
+    push:
+        branches: 
+            - main
+
+jobs: 
+    build-and-deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
+              with: 
+                node-version: 'lts/*'
+            
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build website
+              run: npm run build
+
+            - name: Deploy to Netlify
+              uses: netlify/actions/deploy@v1
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                netlify_site_id: ${{ secrets.NETLIFY_SITE_ID }}
+                deploy_key: ${{ secrets.NETLIFY_DEPLOY_KEY }}
+                publish_dir: '/dist'
