@@ -31,4 +31,6 @@ Para este sitio hice uso de varias herramientas, eligiendo cada una por sus vent
 
 Puedes contactarme a través de samuel.sebas46@gmail.com o https://www.linkedin.com/in/samuel-sebastian-cruz-gonzalez-31b360151/.
 
+Acceso a mi portafolio: https://68108e042747f1ce83114f8c--candid-cobbler-fdb0d8.netlify.app/
+
 ¡Gracias por visitar mi portafolio!

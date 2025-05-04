@@ -295,8 +295,7 @@ filter: brightness(1.2);
   inset: 0;
   z-index: 40;
   background: linear-gradient(135deg, #301934, #512b58, #841c26, transparent 1px);
-  backdrop-filter: blur(8px);
-  
+  backdrop-filter: blur(8px);  
   perspective: 1000px;
 }
 
@@ -307,8 +306,8 @@ filter: brightness(1.2);
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Permite la interacción con el contenido debajo */
-  z-index: -1; /* Asegura que esté detrás del contenido */
+  pointer-events: none; 
+  z-index: -1; 
   background: radial-gradient(ellipse at center bottom, rgba(0, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0) 60%); /* Simula el brillo del horizonte */
   opacity: 0.8;
 }

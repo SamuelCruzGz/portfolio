@@ -1,4 +1,4 @@
-import { MenuBarIcon } from './resources/MenuBarIcon';
+import { MenuBarIcon } from './resources/icons/MenuBarIcon';
 
 
 export default function Navbar() {

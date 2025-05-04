@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { draw, flicker } from '../../animations/MenuAnimations'
+import { draw, flicker } from '../../../animations/MenuAnimations'
 
 interface HomeIconProp {
     isOpen: boolean
@@ -8,6 +8,7 @@ interface HomeIconProp {
 
 
 export const MenuHomeIcon: React.FC<HomeIconProp> = ({ isOpen }) => {
+    
     return (
     <motion.g
     

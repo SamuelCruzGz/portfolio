@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { draw, flicker } from '../../animations/MenuAnimations'
+import { draw, flicker } from '../../../animations/MenuAnimations'
 
 interface ProjectsIconProp {
     isOpen: boolean

@@ -8,7 +8,7 @@ const config: Config = {
     "./src/index.css" 
   ],
   safelist:[
-    'retro-stars'
+    'retro-stars'    
   ],
   theme: {
     extend: {
@@ -21,7 +21,8 @@ const config: Config = {
         'electric-cyan': '#00f7ff',
         'background-gray': '#080808',
         'secondary-grey': '#c7c7c7',
-        'color-font': '#d9d9e3'
+        'color-font': '#d9d9e3',
+        
       },
       fontFamily: {
         orbitron: ['"Orbitron"', 'sans-serif'],
