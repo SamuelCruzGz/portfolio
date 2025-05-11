@@ -1,9 +1,7 @@
 import { motion } from 'framer-motion';
 import { draw, flicker } from '../../../animations/MenuAnimations';
 
-type MenuContactIconProps = {
-    isOpen: boolean
-}
+
 
 const whileHov = {
     whileHover:{
@@ -13,14 +11,15 @@ const whileHov = {
     }
 }
 
-export const MenuContactIcon: React.FC<MenuContactIconProps> = ({  }) => {
+export default function MenuContactIcon() {
     return (
-        <motion.g
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
-            className={"glitch"}
-            transition={{ duration: 3, ease: "easeInOut" }}
-            transform="translate(3900, 0)">   
+        <motion.svg
+            width="40"
+            height="35"
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+            initial="hidden"
+            animate="visible">   
             <motion.circle
                 cx="100" cy="100" r="60" 
                 fill="none"
@@ -54,6 +53,6 @@ export const MenuContactIcon: React.FC<MenuContactIconProps> = ({  }) => {
                 style={{ pathLength: 0 }}
                 {...whileHov}/>
                 
-        </motion.g>  
+        </motion.svg>  
     )
 }

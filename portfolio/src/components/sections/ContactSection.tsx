@@ -1,59 +1,161 @@
-import React, { HtmlHTMLAttributes, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
-import imageMexico  from '../resources/icons/mexico.png';
-import github from '../resources/icons/github.png'
-import linkedin from '../resources/icons/linkedin.png'
-import whatsapp from '../resources/icons/whatsapp.png'
-import gmail from '../resources/icons/gmail.png'
+import Mexico from '../resources/icons/Mexico';
+import GitHub from '../resources/icons/GitHub';
+import LinkedIn from '../resources/icons/LinkedIn';
+import WhatsApp from '../resources/icons/WhatsApp';
+import Gmail from '../resources/icons/Gmail';
+import CV from '../resources/icons/CV';
+import Copy from '../resources/icons/Copy'
+
+type Origin = {
+  x: number;
+  y: number;
+};
 
 interface ContactModalProp {
-    isOpen: boolean,
-    isFullScreen: boolean
+  isOpen: boolean;
+  isFullScreen: boolean;
+  origin: Origin;
+  onClose: () => void;
 }
 
-export const Test: React.FC<ContactModalProp> = ({  }) => {    
-    const email = useRef<HTMLParagraphElement>(null)
-    const phone = useRef<HTMLParagraphElement>(null)
+export const ContactSection: React.FC<ContactModalProp> = ({
+  isOpen,
+  onClose,
+  origin,
+}) => {
+  
+  const phone = "(+52) 56-1062-1878'"
+  const phoneRef = useRef<HTMLParagraphElement>(null);
+  const email = "samuel.sebas46@gmail.com"
+  const emailRef = useRef<HTMLParagraphElement>(null);
 
-    useEffect(() => {
-        const emailTyped = new Typed(email.current, {
-            strings: ['samuel.sebas46@gmail.com'],
-            startDelay: 500,            
-            typeSpeed: 120, 
-                       
-        })
-        
-        const phoneTyped = new Typed(phone.current, {
-            strings: ['(+52) 56-1062-1878'],
-            startDelay: 500,            
-            typeSpeed: 120,            
-        })
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(email)
+  }
 
-        return () => {
-            emailTyped.destroy()
-            phoneTyped.destroy()
-        }
-    }, [])
+  useEffect(() => {
+    if (!isOpen || !emailRef.current || !phoneRef.current) return;
 
-    return (
-        
-    <div className={`fixed top-0 left-0 w-full h-full z-50 max-h-screen max-w-screen retro-stars`}>
-            <div className="relative w-[50vw] h-[30vw] bg-background-gray mx-[25vw] my-[10vw] bg-[radial-gradient(circle,rgba(64,1,28,0.463)_0%,rgb(2,21,44)_100%)]">
-                <h1 className="absolute text-xl text-white font-bold font-oxanium top-[8vw] left-[5vw]" ref={email}></h1>
-                <h1 className="relative text-xl text-white font-bold font-oxanium top-[12vw] left-[5vw]" ref={phone}></h1>
-                <img className='relative top-[3.5vw] left-[35vw] backdrop-opacity-10 ' src={imageMexico} alt="" />
-                <div className='w-[4vw]'>
-                    <img className='relative top-[8vw] left-[8vw] backdrop-opacity-10 ' src={linkedin} alt="" />
-                    <img className='relative top-[4vw] left-[18vw] backdrop-opacity-10 ' src={whatsapp} alt="" />
-                    <img className='relative top-[0vw] left-[28vw] backdrop-opacity-10 ' src={github} alt="" />
-                    <img className='relative top-[-4vw] left-[38vw] backdrop-opacity-10 ' src={gmail} alt="" />
-                </div>
-                
-            </div>
+    const emailTyped = new Typed(emailRef.current, {
+      strings: ['samuel.sebas46@gmail.com'],
+      startDelay: 500,
+      typeSpeed: 120,
+    });
+
+    const phoneTyped = new Typed(phoneRef.current, {
+      strings: ['(+52) 56-1062-1878'],
+      startDelay: 500,
+      typeSpeed: 120,
+    });
+
+    return () => {
+      emailTyped.destroy();
+      phoneTyped.destroy();
+    };
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="retro-stars backdrop-blur-sm">
+      <motion.div
+        initial={{ clipPath: `circle(0% at 50% 50%)`, opacity: 0 }}
+        animate={{ clipPath: `circle(45% at 50% 50%)`, opacity: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{
+          type: 'spring',
+          stiffness: 50,
+          damping: 20,
+          duration: 4,
+          delay: 0.05,
+        }}
+        style={{
+          transformOrigin: `${origin.x}px ${origin.y}px`,
+        }}
+        className="fixed top-0 left-0 w-full h-full z-50 max-h-screen max-w-screen"
+      >
+      <div
+        className="relative 
+          w-[65vw] sm:w-[40vw] md:w-[50vw] lg:w-[40vw]
+          h-[115vw] sm:h-[40vw] md:h-[40vw] lg:h-[20vw]
+          my-[45vw] sm:my-[45vw] md:my-[45vw] lg:my-[15vw]  
+          mx-auto    
+          rounded-2xl border-2 border-pink-500 
+          shadow-[0_0_15px_#ff4bf2]
+          bg-[radial-gradient(circle,rgba(64,1,28,0.463)_0%,rgb(2,21,44)_100%)]"
+      >
+          <button
+            onClick={onClose}
+            className="absolute top-2 right-4 text-white text-2xl hover:text-red-400 transition"
+            aria-label="Cerrar"
+          >
+            ✕
+          </button>
+          
+          <h1 className='my-[4vw] sm:my-[4vw] md:my-[3vw] lg:my-[1vw]
+                         mx-[25vw] sm:mx-[25vw] md:mx-[20vw] lg:mx-[18vw]' ><Mexico/></h1>
+                         
+          <div className="flex items-center gap-2">
+            <p ref={emailRef} className="text-white text-sm font-oxanium" />
+            <button onClick={handleCopyEmail} className="cursor-pointer" title="Copiar email">
+              <Copy />
+            </button>
+          </div>
+
+          <h1
+            className="mt-4 ml-6 text-base sm:text-lg md:text-xl text-white font-bold font-oxanium"
+            ref={phoneRef}
+          ></h1>
+
+ 
+
+          <div className="mt-6 px-6 w-full flex justify-between items-center flex-wrap gap-4">
+            <a
+              href="https://www.linkedin.com/in/samuel-sebastian-cruz-gonzalez-31b360151/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex justify-center items-center"
+            >
+              <LinkedIn />
+            </a>
+            <a
+              href="https://wa.me/525610621878?text=Hola%20Samuel,%20me%20interesa%20contactarte%20por%20tu%20portafolio."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex justify-center items-center"
+            >
+              <WhatsApp />
+            </a>
+            <a
+              href="https://github.com/SamuelCruzGz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex justify-center items-center"
+            >
+              <GitHub />
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex justify-center items-center"
+            >
+              <Gmail />
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex justify-center items-center"
+            >
+              <CV />
+            </a>
+          </div>
+        </div>
+      </motion.div>
     </div>
-
-
-    )
-}
-
-
+  );
+};
