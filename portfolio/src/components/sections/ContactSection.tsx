@@ -32,8 +32,9 @@ export const ContactSection: React.FC<ContactModalProp> = ({
   const email = "samuel.sebas46@gmail.com"
   const emailRef = useRef<HTMLParagraphElement>(null);
 
-  const handleCopyEmail = () => {
+  const handleCopy = () => {
     navigator.clipboard.writeText(email)
+    navigator.clipboard.writeText(phone)
   }
 
   useEffect(() => {
@@ -97,20 +98,22 @@ export const ContactSection: React.FC<ContactModalProp> = ({
           
           <h1 className='my-[4vw] sm:my-[4vw] md:my-[3vw] lg:my-[1vw]
                          mx-[25vw] sm:mx-[25vw] md:mx-[20vw] lg:mx-[18vw]' ><Mexico/></h1>
-                         
-          <div className="flex items-center gap-2">
-            <p ref={emailRef} className="text-white text-sm font-oxanium" />
-            <button onClick={handleCopyEmail} className="cursor-pointer" title="Copiar email">
+
+          <div className="flex items-center
+                         mx-[5vw] sm:mx-[5vw] md:mx-[8vw] lg:mx-[10vw]
+                         my-[1vw]">
+            <p ref={emailRef} className="text-sm sm:text-sm md:text-lg lg:text-2xl text-white text-sm font-oxanium text-center font-bold" />
+            <button onClick={handleCopy} className="cursor-pointer" title="Copiar email">
               <Copy />
             </button>
           </div>
-
-          <h1
-            className="mt-4 ml-6 text-base sm:text-lg md:text-xl text-white font-bold font-oxanium"
-            ref={phoneRef}
-          ></h1>
-
- 
+          <div className='flex items-center 
+                          mx-[10vw] sm:mx-[10vw] md:mx-[11vw] lg:mx-[12vw]'>
+            <p ref={phoneRef} className="text-sm sm:text-sm md:text-lg lg:text-2xl text-white text-sm font-oxanium text-center font-bold" />
+              <button onClick={handleCopy} className="cursor-pointer" title="Copiar phone">
+                <Copy />
+              </button>
+          </div>
 
           <div className="mt-6 px-6 w-full flex justify-between items-center flex-wrap gap-4">
             <a
