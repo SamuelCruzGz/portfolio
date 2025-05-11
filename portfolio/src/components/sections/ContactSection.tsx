@@ -81,7 +81,7 @@ export const ContactSection: React.FC<ContactModalProp> = ({
       <div
         className="relative 
           w-[65vw] sm:w-[40vw] md:w-[50vw] lg:w-[40vw]
-          h-[115vw] sm:h-[40vw] md:h-[40vw] lg:h-[20vw]
+          h-[100vw] sm:h-[40vw] md:h-[40vw] lg:h-[20vw]
           my-[45vw] sm:my-[45vw] md:my-[45vw] lg:my-[15vw]  
           mx-auto    
           rounded-2xl border-2 border-pink-500 
